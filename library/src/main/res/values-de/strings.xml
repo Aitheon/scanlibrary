@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="app_name">ScanLibrary</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="scanning">Scanne</string>
+    <string name="done">Speichern</string>
+    <string name="scan">Weiter</string>
+    <string name="cantCrop">Das Bild kann nicht zugeschnitten werden. Bitte ändern sie die Punkte!</string>
+    <string name="ok">Ok</string>
+    <string name="loading">Lade</string>
+    <string name="applying_filter">Filter wird angewendet</string>
+    <string name="low_memory">Wenig Speicherplatz</string>
+    <string name="low_memory_message">Ihr Telefon hat wenig freien Speicherplatz. Bei der Bearbeitung der Bilder kann es zu Verzögerungen kommen.</string>
+    <string name="rotate">Drehen</string>
+    <string name="submit">Einreichen</string>
+    <string name="optimize">Verbessern</string>
+
+</resources>

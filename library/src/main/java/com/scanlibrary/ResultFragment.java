@@ -25,15 +25,17 @@ public class ResultFragment extends Fragment {
     private ImageView scannedImageView;
     private Button doneButton;
     private Bitmap original;
-    private Button originalButton;
+    // private Button originalButton;
     private Button MagicColorButton;
-    private Button grayModeButton;
-    private Button bwButton;
-    private Button rotanticButton;
+    // private Button grayModeButton;
+    // private Button bwButton;
+    // private Button rotanticButton;
     private Button rotcButton;
     private Bitmap transformed;
     private Bitmap rotoriginal;
     private static ProgressDialogFragment progressDialogFragment;
+
+    private boolean undoMagic = false;
 
     public ResultFragment() {
     }
@@ -47,17 +49,17 @@ public class ResultFragment extends Fragment {
 
     private void init() {
         scannedImageView = (ImageView) view.findViewById(R.id.scannedImage);
-        originalButton = (Button) view.findViewById(R.id.original);
-        originalButton.setOnClickListener(new OriginalButtonClickListener());
+        // originalButton = (Button) view.findViewById(R.id.original);
+        // originalButton.setOnClickListener(new OriginalButtonClickListener());
         MagicColorButton = (Button) view.findViewById(R.id.magicColor);
         MagicColorButton.setOnClickListener(new MagicColorButtonClickListener());
-        grayModeButton = (Button) view.findViewById(R.id.grayMode);
-        grayModeButton.setOnClickListener(new GrayButtonClickListener());
-        bwButton = (Button) view.findViewById(R.id.BWMode);
-        bwButton.setOnClickListener(new BWButtonClickListener());
+        // grayModeButton = (Button) view.findViewById(R.id.grayMode);
+        // grayModeButton.setOnClickListener(new GrayButtonClickListener());
+        // bwButton = (Button) view.findViewById(R.id.BWMode);
+        // bwButton.setOnClickListener(new BWButtonClickListener());
 
-        rotanticButton = (Button) view.findViewById(R.id.rotanticButton);
-        rotanticButton.setOnClickListener(new ResultFragment.RotanticlockButtonClickListener());
+        // rotanticButton = (Button) view.findViewById(R.id.rotanticButton);
+        // rotanticButton.setOnClickListener(new ResultFragment.RotanticlockButtonClickListener());
         rotcButton = (Button) view.findViewById(R.id.rotcButton);
         rotcButton.setOnClickListener(new ResultFragment.RotclockButtonClickListener());
 
@@ -161,33 +163,47 @@ public class ResultFragment extends Fragment {
     private class MagicColorButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(final View v) {
-            showProgressDialog(getResources().getString(R.string.applying_filter));
-            AsyncTask.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        transformed = ((ScanActivity) getActivity()).getMagicColorBitmap(rotoriginal);
-                    } catch (final OutOfMemoryError e) {
+            if(!undoMagic) {
+                showProgressDialog(getResources().getString(R.string.applying_filter));
+                AsyncTask.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            transformed = ((ScanActivity) getActivity()).getMagicColorBitmap(rotoriginal);
+                        } catch (final OutOfMemoryError e) {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    transformed = original;
+                                    scannedImageView.setImageBitmap(original);
+                                    e.printStackTrace();
+                                    dismissDialog();
+                                    onClick(v);
+                                }
+                            });
+                        }
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                transformed = original;
-                                scannedImageView.setImageBitmap(original);
-                                e.printStackTrace();
+                                scannedImageView.setImageBitmap(transformed);
                                 dismissDialog();
-                                onClick(v);
                             }
                         });
                     }
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            scannedImageView.setImageBitmap(transformed);
-                            dismissDialog();
-                        }
-                    });
+                });
+            } else {
+                try {
+                    showProgressDialog(getResources().getString(R.string.applying_filter));
+                    transformed = rotoriginal;
+
+                    scannedImageView.setImageBitmap(rotoriginal);
+                    dismissDialog();
+                } catch (OutOfMemoryError e) {
+                    e.printStackTrace();
+                    dismissDialog();
                 }
-            });
+            }
+
         }
     }
 
