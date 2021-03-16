@@ -31,6 +31,7 @@ public class ResultFragment extends Fragment {
     // private Button bwButton;
     // private Button rotanticButton;
     private Button rotcButton;
+    private Button backButton;
     private Bitmap transformed;
     private Bitmap rotoriginal;
     private static ProgressDialogFragment progressDialogFragment;
@@ -63,6 +64,9 @@ public class ResultFragment extends Fragment {
         rotcButton = (Button) view.findViewById(R.id.rotcButton);
         rotcButton.setOnClickListener(new ResultFragment.RotclockButtonClickListener());
 
+        backButton = (Button) view.findViewById(R.id.backButton);
+        backButton.setOnClickListener(new ResultFragment.BackButtonClickListener());
+
         Bitmap bitmap = getBitmap();
         transformed = bitmap;
         rotoriginal = bitmap;
@@ -92,6 +96,13 @@ public class ResultFragment extends Fragment {
 
     public void setScannedImage(Bitmap scannedImage) {
         scannedImageView.setImageBitmap(scannedImage);
+    }
+
+    private class BackButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            getFragmentManager().popBackStack();
+        }
     }
 
     private class DoneButtonClickListener implements View.OnClickListener {

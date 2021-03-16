@@ -5,6 +5,36 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/kbs_grey"
+        android:layout_gravity="center_vertical">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_arrow_back_24px"
+            android:singleLine="true"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="100dp"
+            android:singleLine="false"
+            android:gravity="center"
+            android:text="@string/rotate_or_optimize"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/editBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,28 +43,27 @@
         android:layout_gravity="center_vertical">
 
         <Button
+            android:id="@+id/rotcButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_rotc"
+            android:singleLine="true"
+            android:text="@string/rotate"
+            android:textColor="@android:color/white" />
+
+        <Button
             android:id="@+id/magicColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginRight="100dp"
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/ic_enhamce_image"
             android:singleLine="true"
             android:text="@string/optimize"
             android:textColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/rotcButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="100dp"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/ic_rotc"
-            android:singleLine="true"
-            android:text="@string/rotate"
-            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

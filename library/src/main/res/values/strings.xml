@@ -14,5 +14,7 @@
     <string name="rotate">Rotate</string>
     <string name="submit">Submit</string>
     <string name="optimize">Optimize</string>
+    <string name="rotate_or_optimize">Rotate the image if necessary or correct the colors</string>
+    <string name="cut_image">Use the dots to trim the image</string>
 
 </resources>
