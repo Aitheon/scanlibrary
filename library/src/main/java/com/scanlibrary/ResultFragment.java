@@ -214,7 +214,7 @@ public class ResultFragment extends Fragment {
                     dismissDialog();
                 }
             }
-
+            undoMagic = !undoMagic;
         }
     }
 
