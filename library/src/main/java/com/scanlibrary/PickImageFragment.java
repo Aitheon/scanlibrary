@@ -124,6 +124,7 @@ public class PickImageFragment extends Fragment {
     }
 
     public void openCamera() {
+        Log.d("SCAN LIBRARY", "openCamera call");
         camorgal = 0;
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -142,6 +143,7 @@ public class PickImageFragment extends Fragment {
             }
             startActivityForResult(cameraIntent, ScanConstants.START_CAMERA_REQUEST_CODE);
         } else {
+            Log.d("SCAN LIBRARY", "no permissions, requesting....");
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_CAMERA_REQUEST_CODE);
         }
     }
@@ -246,9 +248,13 @@ public class PickImageFragment extends Fragment {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d("SCAN LIBRARY", "RequestPermissionResult call");
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_CAMERA_REQUEST_CODE) {
+            Log.d("SCAN LIBRARY", "RequestPermissionResult if ok");
+            Log.d("SCAN LIBRARY", "Grant results 0 " + grantResults[0]);
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("SCAN LIBRARY", "RequestPermissionResult before open camera");
                 openCamera();
             } else {
                 Toast.makeText(getActivity(), "camera permission denied", Toast.LENGTH_LONG).show();
