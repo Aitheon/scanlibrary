@@ -1,6 +1,4 @@
 <resources>
-
-    <string name="app_name">ScanLibrary</string>
     <string name="action_settings">Einstellungen</string>
     <string name="scanning">Scanne</string>
     <string name="done">Speichern</string>
