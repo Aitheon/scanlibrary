@@ -117,12 +117,6 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        Log.i("SCAN LIBRARY", "RequestPermissionResult acxtivity call");
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
     public native Bitmap getScannedBitmap(Bitmap bitmap, float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4);
 
     public native Bitmap getGrayBitmap(Bitmap bitmap);
