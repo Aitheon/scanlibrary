@@ -14,12 +14,12 @@
 
         <Button
             android:id="@+id/backButton"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/ic_arrow_back_24px"
+            android:drawableStart="@drawable/ic_arrow_back_24px"
             android:singleLine="true"
             android:textColor="@android:color/white" />
 
@@ -27,7 +27,7 @@
             android:layout_width="220dp"
             android:layout_height="match_parent"
             android:textColor="@android:color/white"
-            android:layout_marginRight="100dp"
+            android:layout_marginEnd="100dp"
             android:singleLine="false"
             android:gravity="center"
             android:text="@string/rotate_or_optimize"
@@ -82,9 +82,11 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/doneButton"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/scanPadding">
+        android:layout_marginStart="@dimen/scanPadding"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="90dp"
+        android:layout_marginEnd="@dimen/scanPadding">
 
         <ImageView
             android:id="@+id/scannedImage"
