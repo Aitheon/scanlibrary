@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/kbs_grey"
-        android:layout_gravity="center_vertical">
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
 
         <Button
             android:id="@+id/backButton"
@@ -24,14 +25,19 @@
             android:textColor="@android:color/white" />
 
         <TextView
-            android:layout_width="220dp"
+            android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="match_parent"
             android:textColor="@android:color/white"
-            android:layout_marginEnd="100dp"
             android:singleLine="false"
             android:gravity="center"
             android:text="@string/rotate_or_optimize"
             />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
