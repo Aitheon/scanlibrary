@@ -240,7 +240,6 @@ public class ScanFragment extends Fragment {
         @Override
         public void onClick(View v) {
             getFragmentManager().popBackStack();
-            getFragmentManager().popBackStack();
         }
     }
 
