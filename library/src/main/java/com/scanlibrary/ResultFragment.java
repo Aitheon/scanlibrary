@@ -83,6 +83,18 @@ public class ResultFragment extends Fragment {
             getActivity().getContentResolver().delete(uri, null, null);
             return original;
         } catch (IOException e) {
+            // Loading image not possible. Return the uri without applying any rotation or optimization
+            Intent data = new Intent();
+            data.putExtra(ScanConstants.SCANNED_RESULT, uri);
+            getActivity().setResult(Activity.RESULT_OK, data);
+            System.gc();
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dismissDialog();
+                    getActivity().finish();
+                }
+            });
             e.printStackTrace();
         }
         return null;

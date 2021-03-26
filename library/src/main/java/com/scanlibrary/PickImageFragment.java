@@ -124,7 +124,6 @@ public class PickImageFragment extends Fragment {
     }
 
     public void openCamera() {
-        Log.i("SCAN LIBRARY", "openCamera call");
         camorgal = 0;
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);

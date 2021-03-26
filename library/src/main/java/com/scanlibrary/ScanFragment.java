@@ -87,6 +87,8 @@ public class ScanFragment extends Fragment {
             getActivity().getContentResolver().delete(uri, null, null);
             return bitmap;
         } catch (IOException e) {
+            // Loading not possible. Return the uri without cropping
+            scanner.onScanFinish(uri);
             e.printStackTrace();
         }
         return null;
