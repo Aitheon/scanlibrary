@@ -54,7 +54,7 @@ public class ResultFragment extends Fragment {
         // originalButton = (Button) view.findViewById(R.id.original);
         // originalButton.setOnClickListener(new OriginalButtonClickListener());
         MagicColorButton = (Button) view.findViewById(R.id.magicColor);
-        MagicColorButton.setBackgroundColor(0x55ffffff);
+        MagicColorButton.setBackgroundColor(0x00000000);
         MagicColorButton.setOnClickListener(new MagicColorButtonClickListener());
         // grayModeButton = (Button) view.findViewById(R.id.grayMode);
         // grayModeButton.setOnClickListener(new GrayButtonClickListener());
@@ -199,7 +199,6 @@ public class ResultFragment extends Fragment {
                                 public void run() {
                                     transformed = original;
                                     scannedImageView.setImageBitmap(original);
-                                    MagicColorButton.setBackgroundColor(0x55ffffff);
                                     e.printStackTrace();
                                     dismissDialog();
                                     onClick(v);
@@ -210,6 +209,7 @@ public class ResultFragment extends Fragment {
                             @Override
                             public void run() {
                                 scannedImageView.setImageBitmap(transformed);
+                                MagicColorButton.setBackgroundColor(0x55ffffff);
                                 dismissDialog();
                             }
                         });
