@@ -54,6 +54,7 @@ public class ResultFragment extends Fragment {
         // originalButton = (Button) view.findViewById(R.id.original);
         // originalButton.setOnClickListener(new OriginalButtonClickListener());
         MagicColorButton = (Button) view.findViewById(R.id.magicColor);
+        MagicColorButton.setBackgroundColor(0x55ffffff);
         MagicColorButton.setOnClickListener(new MagicColorButtonClickListener());
         // grayModeButton = (Button) view.findViewById(R.id.grayMode);
         // grayModeButton.setOnClickListener(new GrayButtonClickListener());
