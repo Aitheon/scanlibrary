@@ -198,6 +198,7 @@ public class ResultFragment extends Fragment {
                                 public void run() {
                                     transformed = original;
                                     scannedImageView.setImageBitmap(original);
+                                    MagicColorButton.setBackgroundColor(0x55ffffff);
                                     e.printStackTrace();
                                     dismissDialog();
                                     onClick(v);
@@ -220,6 +221,7 @@ public class ResultFragment extends Fragment {
 
                     scannedImageView.setImageBitmap(rotoriginal);
                     dismissDialog();
+                    MagicColorButton.setBackgroundColor(0x00000000);
                 } catch (OutOfMemoryError e) {
                     e.printStackTrace();
                     dismissDialog();
